@@ -1,63 +1,120 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Main{
     private static Scanner scan = new Scanner(System.in);
-    private static Scanner scanNumbers = new Scanner(System.in);
-    public static int lkm = 0;  
     
    public static void main(String [] args){
-
-        Asukkaat [][] asukastiedot = null;
-
+        Tontti tontti;
+        Rakennus rakennus;
+        Asukkaat asukkaat;
         
-        lueTontti();
-        lueRakennus();    
-        lkm = rakennus.getAsukasLkm();
-        asukastiedot = new Asukkaat[lkm][1];
-        lueAsukkaat(asukastiedot);
+        tontti = lueTontti();
+        rakennus = lueRakennus();
+        asukkaat = lueAsukkaat(rakennus.getAsukasLkm());
 
         tontti.tulostaTiedot();
         rakennus.tulostaTiedot();
-        for( int i=0; i < asukastiedot.length; i++ ){
-         asukastiedot[i].tulostaTiedot();
+        asukkaat.tulostaTiedot(rakennus.getAsukasLkm());
+    }
+
+    public static Tontti lueTontti(){
+        String nimi, sijainti;
+        double pintaAla;
+      
+        System.out.print("Anna tontin nimi> ");
+        nimi = scan.nextLine();
+
+        System.out.print("Anna tontin koordinaatit muodossa XX.XXXN, XX.XXXE> ");
+        sijainti = scan.nextLine();
+        
+         while (true){
+            try {
+                System.out.print("Anna tontin pinta-ala neliometreina> ");
+                pintaAla = scan.nextDouble();
+                scan.nextLine();
+                break;
+            }
+            catch (InputMismatchException e){
+                System.err.println("Please enter a number! ");
+                scan.nextLine();
+                continue;
+            }
+        }   
+
+        
+        Tontti tontti = new Tontti(nimi, sijainti, pintaAla);
+        
+        return tontti;
+    }
+
+    public static Rakennus lueRakennus(){
+        double pintaAla;
+        int huoneLkm, asukasLkm;
+        while (true){
+            try {
+                System.out.print("Anna rakennuksen pinta-ala neliometreina> ");
+                pintaAla = scan.nextDouble();
+                scan.nextLine();
+                break;
+            }
+            catch (InputMismatchException e){
+                System.err.println("Please enter a number! ");
+                scan.nextLine();
+                continue;
+            }
         }
+        
+
+        while (true){
+            try {
+                System.out.print("Anna huoneiden lukumaara> ");
+                huoneLkm = scan.nextInt();
+                scan.nextLine();
+                break;
+            }
+            catch (InputMismatchException e){
+                System.err.println("Please enter a number! ");
+                scan.nextLine();
+                continue;
+            }
+        }
+
+        while (true){
+            try {
+                System.out.print("Anna asukkaiden lukumaara> ");
+                asukasLkm = scan.nextInt();  
+                scan.nextLine();
+                break;
+            }
+            catch (InputMismatchException e){
+                System.err.println("Please enter a number! ");
+                scan.nextLine();
+                continue;
+            }
+        }    
+        Rakennus rakennus = new Rakennus(pintaAla, huoneLkm, asukasLkm);
+        
+        return rakennus;
+        }
+
+
+
+    public static Asukkaat lueAsukkaat(int lkm){
+        String nimilista[] = new String[lkm];
+        String syntymaAikaLista[] = new String[lkm];
+        
+        for (int asukas=0; asukas<lkm; asukas++){ 
+            System.out.print("Anna asukkaan " + (asukas+1) + " nimi> ");
+            nimilista[asukas] = scan.nextLine();
+            System.out.print("Anna asukkaan " + (asukas+1) + " syntyma-aika> ");
+            syntymaAikaLista[asukas] = scan.nextLine();
+                
+        }
+        Asukkaat asukkaat  = new Asukkaat(nimilista, syntymaAikaLista);  
+        return asukkaat;
     }
-
-    public static void lueTontti(){
-      Tontti tontti = new Tontti();
-
-      System.out.print("Anna tontin nimi> ");
-      tontti.setNimi(scan.nextLine());
-
-      System.out.print("Anna tontin koordinaatit muodossa XX.XXXN, XX.XXXE> ");
-      tontti.setSijainti(scan.nextLine());
-
-      System.out.print("Anna tontin pinta-ala neliometreina> ");
-      tontti.setPintaAla(scanNumbers.nextFloat());
-    }
-
-    public static void lueRakennus(){
-      Rakennus rakennus = new Rakennus();
-
-      System.out.print("Anna rakennuksen pinta-ala neliometreina> ");
-      rakennus.setPintaAla(scanNumbers.nextFloat());
-
-      System.out.print("Anna huoneiden lukumaara> ");
-      rakennus.setHuoneLkm(scanNumbers.nextInt());
-
-      System.out.print("Anna asukkaiden lukumaara> ");
-      rakennus.setAsukasLkm(scanNumbers.nextInt());
-
-    }
-
-    public static void lueAsukkaat(Asukkaat [][] asukastiedot){
-      for(int i=0; i<=lkm; i++){
-      System.out.printf("Anna asukkaan numero %d nimi> ", i+1);
-      asukastiedot[i][0].setNimi(scan.nextLine());
-
-      System.out.printf("Anna asukkaan %s syntyma-aika> ", asukastiedot[i].getNimi());
-      asukastiedot[i][1].setSyntymaAika(scan.nextLine());
-      }
-    }
-
 }
+
+
+

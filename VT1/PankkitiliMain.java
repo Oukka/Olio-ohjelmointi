@@ -2,30 +2,24 @@ import java.util.Scanner;
 
 public class PankkitiliMain{
   
-    public static void main(String [] args){
-        
-        Pankkitili tili = new Pankkitili();
-        
+    public static void main(String [] args){      
+ 
         Scanner input = new Scanner(System.in);
+
+        double saldo, otto, talletus;
+        int toiminto, tilin_omistaja, tilinro;   
         
         System.out.print("Anna tilin omistaja> ");
-        tili.setOmistaja(input.nextLine());
-        
+        tilin_omistaja = input.nextLine();
         System.out.print("Anna tilinumero> ");
-        tili.setNumero(input.nextLine());
-        
-        double saldo;
-        double otto;
-        double talletus;
-        int toiminto;   
-        
+        tilinro = input.nextLine();
         do{
         System.out.print("Anna tilin saldo> ");
         saldo = input.nextDouble();
         } while(saldo<0);
         saldo = Math.round(saldo*100.0)/100.0;        
         tili.setSaldo(saldo);
-        
+        Pankkitili tili = new Pankkitili(tilin_omistaja, tilinro, saldo);        
         do{
             tulostaValikko();
             toiminto = input.nextInt();
@@ -53,7 +47,6 @@ public class PankkitiliMain{
         } while (toiminto != 4);
        
     }
-    
     public static void tulostaValikko(){
     System.out.println();
     System.out.println("Anna toiminnon numero");

@@ -1,45 +1,36 @@
 public class Asukkaat{
-    private String nimi;
-    private String syntymaAika;
-    private int asukasLkm;
+    private String nimet[];
+    private String syntymaAjat[];
 
-public Asukkaat(){
-  asukasLkm++;
-}
-
-	public Asukkaat(String nimi, String syntymaAika){
-	this.nimi = nimi;
-	this.syntymaAika = syntymaAika;
-	}
-
-    public void tulostaTiedot(){
+    public Asukkaat(String nimet[], String syntymaAjat[]){
+        this.nimet = nimet;
+        this.syntymaAjat = syntymaAjat;
+    }
+    
+    public Asukkaat(int lkm){
+    String nimet[] = new String[lkm];
+    String syntymaAjat[] = new String[lkm];
+    }
+    
+    public void tulostaTiedot(int lkm){
         System.out.println();
-        System.out.println("Asukas " + getNimi() + " on syntynyt " + getSyntymaAika());
+        for (int i=0; i<lkm; i++)  
+            System.out.println("Asukas " + nimet[i] + " on syntynyt " + syntymaAjat[i]);
     }
 
-    public void setNimi(String nimi){
-        this.nimi = nimi;
+    public void setNimet(String nimet[]){
+        this.nimet = nimet;
     }
 
-    public void setSyntymaAika(String syntymaAika){
-        this.syntymaAika = syntymaAika;
+    public void setSyntymaAjat(String syntymaAjat[]){
+        this.syntymaAjat = syntymaAjat;
     }
 
-    public void setAsukasLkm(int asukasLkm){
-      this.asukasLkm = asukasLkm;
+    public String[] getNimet(){
+        return nimet;
     }
 
-    public String getNimi(){
-        return nimi;
+    public String[] getSyntymaAjat(){
+        return syntymaAjat;
     }
-
-    public String getSyntymaAika(){
-        return syntymaAika;
-    }
-
-    public int getAsukasLkm(){
-      return asukasLkm;
-    }
-
-
 }

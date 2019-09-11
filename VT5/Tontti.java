@@ -1,21 +1,20 @@
 public class Tontti{
-    private String nimi;
-    private String sijainti;
+    private String nimi, osoite;
     private double pintaAla;
-
-public Tontti(){
-}
-
-	public Tontti(String nimi, String sijainti, double pintaAla){
+   
+    public Tontti(){
+    }
+    
+	public Tontti(String nimi, String osoite, double pintaAla){
 	this.nimi = nimi;
-	this.sijainti = sijainti;
+	this.osoite = osoite;
 	this.pintaAla = pintaAla;
 	}
 
     public void tulostaTiedot(){
         System.out.println();
         System.out.println("Tontin nimi:      " + getNimi());
-        System.out.println("Tontin sijainti:  " + getSijainti());
+        System.out.println("Tontin osoite:    " + getOsoite());
         System.out.println("Tontin pinta-ala: " + getPintaAla() + " neliometria");
     }
     
@@ -23,8 +22,8 @@ public Tontti(){
         this.nimi = nimi;
     }
 
-    public void setSijainti(String sijainti){
-        this.sijainti = sijainti;
+    public void setOsoite(String osoite){
+        this.osoite = osoite;
     }
 
     public void setPintaAla(double pintaAla){
@@ -35,8 +34,8 @@ public Tontti(){
         return nimi;
     }
 
-    public String getSijainti(){
-        return sijainti;
+    public String getOsoite(){
+        return osoite;
     }
 
     public double getPintaAla(){

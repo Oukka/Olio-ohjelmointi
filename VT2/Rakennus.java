@@ -1,12 +1,12 @@
 public class Rakennus{
-    private float pintaAla;
+    private double pintaAla;
     private int huoneLkm;
     private int asukasLkm;
 
 public Rakennus() {
 }
 
-	public Rakennus(float pintaAla, int huoneLkm, int asukasLkm){
+	public Rakennus(double pintaAla, int huoneLkm, int asukasLkm){
 	this.pintaAla = pintaAla;
 	this.huoneLkm = huoneLkm;
 	this.asukasLkm = asukasLkm;
@@ -14,12 +14,12 @@ public Rakennus() {
 
     public void tulostaTiedot(){
         System.out.println();
-        System.out.println("Rakennuksen pinta-ala: " + getPintaAla());
-        System.out.println("Huoneitten lukumaara: " + getHuoneLkm());
-        System.out.println("Asukkaitten lukumaara: " + getAsukasLkm());
+        System.out.println("Rakennuksen pinta-ala: " + getPintaAla() + " neliometria");
+        System.out.println("Huoneitten lukumaara:  " + getHuoneLkm() + " kpl");
+        System.out.println("Asukkaitten lukumaara: " + getAsukasLkm() + " kpl");
         }
 
-    public void setPintaAla(float pintaAla){
+    public void setPintaAla(double pintaAla){
         this.pintaAla = pintaAla;
     }
 
@@ -31,7 +31,7 @@ public Rakennus() {
         this.asukasLkm = asukasLkm;
     }
 
-    public float getPintaAla(){
+    public double getPintaAla(){
         return pintaAla;
     }
 
