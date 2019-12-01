@@ -3,12 +3,12 @@ import java.util.InputMismatchException;
 
 public class Main{
     private static Scanner scan = new Scanner(System.in);
-    
+
    public static void main(String [] args){
         Tontti tontti;
         Rakennus rakennus;
         Asukkaat asukkaat;
-        
+
         tontti = lueTontti();
         rakennus = lueRakennus();
         asukkaat = lueAsukkaat(rakennus.getAsukasLkm());
@@ -21,13 +21,13 @@ public class Main{
     public static Tontti lueTontti(){
         String nimi, sijainti;
         double pintaAla;
-      
+
         System.out.print("Anna tontin nimi> ");
         nimi = scan.nextLine();
 
         System.out.print("Anna tontin koordinaatit muodossa XX.XXXN, XX.XXXE> ");
         sijainti = scan.nextLine();
-        
+
          while (true){
             try {
                 System.out.print("Anna tontin pinta-ala neliometreina> ");
@@ -40,11 +40,11 @@ public class Main{
                 scan.nextLine();
                 continue;
             }
-        }   
+        }
 
-        
+
         Tontti tontti = new Tontti(nimi, sijainti, pintaAla);
-        
+
         return tontti;
     }
 
@@ -64,7 +64,7 @@ public class Main{
                 continue;
             }
         }
-        
+
 
         while (true){
             try {
@@ -83,7 +83,7 @@ public class Main{
         while (true){
             try {
                 System.out.print("Anna asukkaiden lukumaara> ");
-                asukasLkm = scan.nextInt();  
+                asukasLkm = scan.nextInt();
                 scan.nextLine();
                 break;
             }
@@ -92,9 +92,9 @@ public class Main{
                 scan.nextLine();
                 continue;
             }
-        }    
+        }
         Rakennus rakennus = new Rakennus(pintaAla, huoneLkm, asukasLkm);
-        
+
         return rakennus;
         }
 
@@ -103,18 +103,15 @@ public class Main{
     public static Asukkaat lueAsukkaat(int lkm){
         String nimilista[] = new String[lkm];
         String syntymaAikaLista[] = new String[lkm];
-        
-        for (int asukas=0; asukas<lkm; asukas++){ 
+
+        for (int asukas=0; asukas<lkm; asukas++){
             System.out.print("Anna asukkaan " + (asukas+1) + " nimi> ");
             nimilista[asukas] = scan.nextLine();
             System.out.print("Anna asukkaan " + (asukas+1) + " syntyma-aika> ");
             syntymaAikaLista[asukas] = scan.nextLine();
-                
+
         }
-        Asukkaat asukkaat  = new Asukkaat(nimilista, syntymaAikaLista);  
+        Asukkaat asukkaat  = new Asukkaat(nimilista, syntymaAikaLista);
         return asukkaat;
     }
 }
-
-
-
