@@ -28,11 +28,12 @@ public class Rakennus{
         Omakotitalo(int asuntoLkm, ArrayList<Double> aPintaAlat, ArrayList<Asukas> Asukkaat){
         }
     }
-    
+
     public class Asunto extends Rakennus{
-        Asunto(int huoneLkm, pintaAla, ArrayList<Asukas> Asukkaat)
+        Asunto(int huoneLkm, int pintaAla, ArrayList<Asukas> Asukkaat){
+        }
     }
-    
+
     public void tulostaTiedot(){
         System.out.println();
         System.out.println("Rakennuksen tyyppi:    " + getTyyppi());
@@ -45,19 +46,19 @@ public class Rakennus{
     public void setTyyppi(String tyyppi){
         this.tyyppi = tyyppi;
     }
-    
+
     public void setAsuntoLkm(int asuntoLkm){
         this.asuntoLkm = asuntoLkm;
     }
-    
+
     public void setHuoneLkm(int huoneLkm){
         this.huoneLkm = huoneLkm;
-    }     
-    
+    }
+
     public void setaPintaAlat(ArrayList<Double> aPintaAlat){
         this.aPintaAlat = aPintaAlat;
     }
-    
+
     public void setAsukkaat(ArrayList<Asukas> asukkaat){
         this.asukkaat = asukkaat;
     }
@@ -71,7 +72,7 @@ public class Rakennus{
     public int getHuoneLkm(){
         return huoneLkm;
     }
-    
+
     public ArrayList<Double> getaPintaAlat(){
         return aPintaAlat;
     }

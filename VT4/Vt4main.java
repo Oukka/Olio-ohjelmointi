@@ -1,28 +1,27 @@
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
-public class Vt4main{ 
+public class Vt4main{
     private static Scanner scan = new Scanner(System.in);
-    
+
     public static void main(String [] args){
         boolean newProperty = true;
         boolean validInput;
         String propertyName, location;
-        String input; 
+        String input;
         double value, higherValue, lowerValue;
 
-        InsInfoContainer container = new InsInfoContainer();        
+        InsInfoContainer container = new InsInfoContainer();
         while (newProperty){
 
-            
             System.out.print("Enter name of the property> ");
             propertyName = scan.nextLine();
-            
+
             System.out.print("Enter property location> ");
             location = scan.nextLine();
-            
+
             Property property = new Property(propertyName, location);
-            
+
             while (true){
                 try {
                     System.out.print("Enter insured value of the property> ");
@@ -48,14 +47,14 @@ public class Vt4main{
                         newProperty = true;
                         break;
                         }
-                    if (input.equals("n")){                  
+                    if (input.equals("n")){
                         newProperty = false;
                         break;
                         }
                 }
         }
         container.printAll();
-        
+
         while (true){
             try {
                 System.out.print("Enter value to print property information of higher insured values> ");
@@ -70,7 +69,7 @@ public class Vt4main{
             }
         }
         container.printHigherValued(higherValue);
-        
+
         while (true){
             try {
                 System.out.print("Enter value to print property information of lower insured values> ");
@@ -84,6 +83,7 @@ public class Vt4main{
                 continue;
             }
         }
-        
+        container.printLowerValued(lowerValue);
+
     }
 }
