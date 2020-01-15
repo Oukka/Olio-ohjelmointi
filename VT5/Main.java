@@ -9,7 +9,11 @@ public class Main{
         Asukas asukas;
         
         tontti = lueTontti();
-        lueRakennus();
+		rakennus = lueRakennus();
+        //rakennus = lueRakennus();
+		tontti.tulostaTiedot();
+		rakennus.tulostaTiedot();
+		
 /*         asukkaat = lueAsukkaat(rakennus.getAsukasLkm());
 
         tontti.tulostaTiedot();
@@ -49,8 +53,8 @@ public class Main{
         return tontti;
     }
 
-    public static void lueRakennus(){
-        String asukkaanNimi;
+    public static Rakennus lueRakennus(){
+        String asukkaanNimi, tyyppi;
         int valinta, asuntoLkm, huoneLkm = 0, asukasLkm = 0;
         double pintaAla;
         ArrayList<Double> aPintaAlat;
@@ -64,8 +68,12 @@ public class Main{
             try {
                 System.out.print("Anna rakennuksen tyyppi numerona 1. kerrostalo 2. rivitalo 3. omakotitalo> ");
                 valinta  = scan.nextInt();
-                scan.nextLine();
-                break;
+				scan.nextLine();
+                if (valinta>=1 && valinta <= 4){
+					break;
+				} else{
+					continue;
+				}
             }
             catch (InputMismatchException e){
                 System.err.println("Syota numero! ");
@@ -156,24 +164,28 @@ public class Main{
         }
         switch (valinta){ //tehdaan olio rakennustyypin mukaan
             case 1:
-               //tyyppi = "kerrostalo";
-               Rakennus.Kerrostalo kerrostalo = rakennus.new Kerrostalo(asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
+               tyyppi = "kerrostalo";
+               Rakennus.Kerrostalo kerrostalo = rakennus.new Kerrostalo(tyyppi, asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
                //rakennus.Kerrostalo(asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
-               break;
-           
+			   //kerrostalo.tulostaTiedot();
+			   //break;
+				return kerrostalo;
             case 2:
-                //tyyppi = "rivitalo";
-                Rakennus.Rivitalo rivitalo = rakennus.new Rivitalo(asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
-                break;
+                tyyppi = "rivitalo";
+                Rakennus.Rivitalo rivitalo = rakennus.new Rivitalo(tyyppi, asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
+                //rivitalo.tulostaTiedot();
+			   //break;
+				return rivitalo;
             case 3:
-                //tyyppi = "omakotitalo";
-                Rakennus.Omakotitalo omakotitalo = rakennus.new Omakotitalo(asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
-                break;
-
+                tyyppi = "omakotitalo";
+                Rakennus.Omakotitalo omakotitalo = rakennus.new Omakotitalo(tyyppi, huoneLkm, aPintaAlat, asukkaat);
+                //omakotitalo.tulostaTiedot();
+			   //break;
+				return omakotitalo;
+				
         }
-        
+        return rakennus;
 
-        //return rakennus;
     }
 } 
 

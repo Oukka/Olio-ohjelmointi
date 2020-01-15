@@ -5,7 +5,7 @@ public class Asukas{
         this.nimi = nimi;
     }
     
-    public void tulostaTiedot(int lkm){
+    public void tulostaTiedot(){
         System.out.print(nimi);
     }
 
