@@ -25,7 +25,7 @@ public class Main{
         System.out.print("Anna tontin nimi> ");
         nimi = scan.nextLine();
 
-        System.out.print("Anna tontin koordinaatit muodossa XX.XXXN, XX.XXXE> ");
+        System.out.print("Anna tontin koordinaatit> ");
         sijainti = scan.nextLine();
 
          while (true){

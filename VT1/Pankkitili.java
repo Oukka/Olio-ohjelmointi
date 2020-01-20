@@ -36,9 +36,9 @@ public class Pankkitili{
 
     public void tulostaTiedot(){
         System.out.println();
-        System.out.println("Tilin omistaja: " + getOmistaja());
-        System.out.println("Tilinumero: " + getNumero());
-        System.out.printf("Tilin saldo: %.2f euroa", getSaldo());
+        System.out.println("Tilin omistaja: " + tilinOmistaja);
+        System.out.println("Tilinumero: " + tilinumero);
+        System.out.printf("Tilin saldo: %.2f euroa", saldo);
         System.out.println();
     }
 

@@ -14,9 +14,9 @@ public Tontti(){
 
     public void tulostaTiedot(){
         System.out.println();
-        System.out.println("Tontin nimi:      " + getNimi());
-        System.out.println("Tontin sijainti:  " + getSijainti());
-        System.out.println("Tontin pinta-ala: " + getPintaAla() + " neliometria");
+        System.out.println("Tontin nimi:      " + nimi);
+        System.out.println("Tontin sijainti:  " + sijainti);
+        System.out.println("Tontin pinta-ala: " + pintaAla + " neliometria");
     }
     
     public void setNimi(String nimi){

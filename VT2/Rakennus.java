@@ -14,9 +14,9 @@ public Rakennus() {
 
     public void tulostaTiedot(){
         System.out.println();
-        System.out.println("Rakennuksen pinta-ala: " + getPintaAla() + " neliometria");
-        System.out.println("Huoneitten lukumaara:  " + getHuoneLkm() + " kpl");
-        System.out.println("Asukkaitten lukumaara: " + getAsukasLkm() + " kpl");
+        System.out.println("Rakennuksen pinta-ala: " + pintaAla + " neliometria");
+        System.out.println("Huoneitten lukumaara:  " + huoneLkm + " kpl");
+        System.out.println("Asukkaitten lukumaara: " + asukasLkm + " kpl");
         }
 
     public void setPintaAla(double pintaAla){

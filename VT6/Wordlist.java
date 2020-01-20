@@ -7,7 +7,8 @@ import java.nio.file.Paths;
 
 public class Wordlist{
     private List<String> list = new ArrayList<String>();
-    private int listSize;
+    private int listSize, wordLength;
+	
 
     public Wordlist(String fileName){
         try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
@@ -22,6 +23,8 @@ public class Wordlist{
         listSize = list.size();
     }
     
+
+	
     public List<String> returnWords(){
         return list;
     }
@@ -39,8 +42,5 @@ public class Wordlist{
             System.out.println(list.get(i));
         }
     }
-    
-    Public Wordlist wordsWithChars(String chars){
-        
-    }
+
 }

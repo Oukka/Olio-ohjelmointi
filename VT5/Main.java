@@ -10,15 +10,10 @@ public class Main{
         
         tontti = lueTontti();
 		rakennus = lueRakennus();
-        //rakennus = lueRakennus();
+		asukas = lueAsukkaat(rakennus.getAsukasLkm());
 		tontti.tulostaTiedot();
 		rakennus.tulostaTiedot();
-		
-/*         asukkaat = lueAsukkaat(rakennus.getAsukasLkm());
-
-        tontti.tulostaTiedot();
-        rakennus.tulostaTiedot();
-        asukkaat.tulostaTiedot(rakennus.getAsukasLkm()); */
+		asukas.tulostaTiedot();
     }
 
     public static Tontti lueTontti(){
@@ -54,14 +49,12 @@ public class Main{
     }
 
     public static Rakennus lueRakennus(){
-        String asukkaanNimi, tyyppi;
-        int valinta, asuntoLkm, huoneLkm = 0, asukasLkm = 0;
+        String tyyppi;
+        int valinta, asuntoLkm, huoneLkm = 0, asukasLkm = 0, lkm = 0;
         double pintaAla;
         ArrayList<Double> aPintaAlat;
-        ArrayList<Asukas> asukkaat;
         
         aPintaAlat = new ArrayList<Double>();
-        asukkaat = new ArrayList<Asukas>();
         Rakennus rakennus = new Rakennus();
         
         while (true){
@@ -114,7 +107,7 @@ public class Main{
                     }
                 }
                 catch (InputMismatchException e){
-                    System.err.println("Please enter a number! ");
+                    System.err.println("Anna numero! ");
                     scan.nextLine();
                     continue;
                 }
@@ -133,7 +126,7 @@ public class Main{
                     }
                 }
                 catch (InputMismatchException e){
-                    System.err.println("Please enter a number! ");
+                    System.err.println("Anna numero! ");
                     scan.nextLine();
                     continue;
                 }
@@ -141,52 +134,54 @@ public class Main{
             while (true){
                 try {
                     System.out.print("Anna asunnon " + i + " asukkaiden lukumaara> ");
-                    asukasLkm = scan.nextInt();
+                    lkm = scan.nextInt();
                     scan.nextLine();
-                    if (asukasLkm>0){
+                    if (lkm>0){
+						asukasLkm+=lkm;
                         break;
                     } else{
                         continue;
                     }
                 }
                 catch (InputMismatchException e){
-                    System.err.println("Please enter a number! ");
+                    System.err.println("Anna numero! ");
                     scan.nextLine();
                     continue;
                 }
             }
-            for (int j=1; j<=asukasLkm; j++){
-                System.out.print("Anna " + j + ". asukkaan nimi> ");
-                asukkaanNimi = scan.nextLine();
-                Asukas asukas = new Asukas(asukkaanNimi);
-                asukkaat.add(asukas);            
-            }
+
         }
         switch (valinta){ //tehdaan olio rakennustyypin mukaan
             case 1:
-               tyyppi = "kerrostalo";
-               Rakennus.Kerrostalo kerrostalo = rakennus.new Kerrostalo(tyyppi, asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
-               //rakennus.Kerrostalo(asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
-			   //kerrostalo.tulostaTiedot();
-			   //break;
+                tyyppi = "kerrostalo";
+                Rakennus.Kerrostalo kerrostalo = rakennus.new Kerrostalo(tyyppi, asuntoLkm, huoneLkm, aPintaAlat, asukasLkm);
 				return kerrostalo;
             case 2:
                 tyyppi = "rivitalo";
-                Rakennus.Rivitalo rivitalo = rakennus.new Rivitalo(tyyppi, asuntoLkm, huoneLkm, aPintaAlat, asukkaat);
-                //rivitalo.tulostaTiedot();
-			   //break;
+                Rakennus.Rivitalo rivitalo = rakennus.new Rivitalo(tyyppi, asuntoLkm, huoneLkm, aPintaAlat, asukasLkm);
 				return rivitalo;
             case 3:
                 tyyppi = "omakotitalo";
-                Rakennus.Omakotitalo omakotitalo = rakennus.new Omakotitalo(tyyppi, huoneLkm, aPintaAlat, asukkaat);
-                //omakotitalo.tulostaTiedot();
-			   //break;
+                Rakennus.Omakotitalo omakotitalo = rakennus.new Omakotitalo(tyyppi, asuntoLkm, huoneLkm, aPintaAlat, asukasLkm);
 				return omakotitalo;
 				
         }
-        return rakennus;
+        return rakennus; //tanne ei paasta mutta koodi ei kaanny ilman
 
     }
+	
+	public static Asukas lueAsukkaat(int asukasLkm){
+		String asukkaanNimi;
+		
+		Asukas asukas = new Asukas();
+		for (int j=1; j<=asukasLkm; j++){
+		System.out.print("Anna " + j + ". asukkaan nimi> ");
+		asukkaanNimi = scan.nextLine();
+		asukas.lisaaAsukas(asukkaanNimi);
+        }
+		
+		return asukas;
+	}
 } 
 
 
